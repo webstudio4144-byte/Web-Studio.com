@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Studio | Premier Web Design & Digital Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Brand Colors based on Logo */
+        :root {
+            --primary-color: #8A3FFC; /* Brand Purple */
+            --primary-light: #A56EFF; 
+            --bg-dark: #0F0C1B;       /* Deep premium dark background */
+            --bg-card: #1A152E;       /* Slightly lighter purple-tinted dark */
+            --text-light: #F4F2F7;
+            --text-muted: #A39EB0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 12, 27, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 63, 252, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Placeholder icon matching the logo structure */
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-nav {
+            background: var(--primary-color);
+            color: white !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600 !important;
+        }
+
+        .btn-nav:hover {
+            background: var(--primary-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 2rem 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-main {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(138, 63, 252, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(138, 63, 252, 0.1);
+        }
+
+        /* Visual representation of the logo container */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-display {
+            background: var(--bg-card);
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 20px rgba(138, 63, 252, 0.2);
+            border: 1px solid rgba(138, 63, 252, 0.2);
+            text-align: center;
+        }
+
+        .logo-display i {
+            font-size: 5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background-color: var(--bg-card);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-dark);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(138, 63, 252, 0.15);
+        }
+
+        .service-icon {
+            background-color: rgba(138, 63, 252, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Portfolio / Showcase Section */
+        .showcase {
+            padding: 6rem 2rem;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .showcase-item {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 63, 252, 0.4);
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .showcase-item:hover .showcase-image img {
+            transform: scale(1.05);
+        }
+
+        .showcase-content {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+
+        .showcase-tag {
+            background-color: rgba(138, 63, 252, 0.1);
+            color: var(--primary-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact / Lead Form */
+        .contact {
+            padding: 6rem 2rem;
+            background-color: var(--bg-card);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-method i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-method a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: var(--primary-light);
+        }
+
+        form {
+            background-color: var(--bg-dark);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        form input:focus, form textarea:focus, form select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        form button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* --- Scroll Animation Styles --- */
+        .js-reveal .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .js-reveal .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .js-reveal .delay-1 { transition-delay: 0.1s; }
+        .js-reveal .delay-2 { transition-delay: 0.2s; }
+        .js-reveal .delay-3 { transition-delay: 0.3s; }
+        .js-reveal .delay-4 { transition-delay: 0.4s; }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 10rem;
+            }
+            .hero-text p {
+                margin: 0 auto 2.5rem auto;
+            }
+            .cta-buttons {
+                justify-content: center;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-code logo-icon"></i> Web<span>Studio</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#showcase">Our Work</a></li>
+                <li><a href="#contact" class="btn-nav">Let's Talk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>We Scale Brands Through <span>High-Converting</span> Digital Experiences</h1>
+            <p>Web Studio is a premier digital agency that combines stunning web design with high-impact marketing assets. From customized landing pages to organic UGCs and viral ad creatives, we build everything your brand needs to scale.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-main btn-primary">Grow My Brand</a>
+                <a href="#services" class="btn-main btn-secondary">Explore Services</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="logo-display">
+                <i class="fa-solid fa-cubes"></i>
+                <h2>Web Studio</h2>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 5px;">Premier Web Design & Digital Agency</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-container">
+            <div class="section-header scroll-reveal">
+                <h2>Our Ecosystem of Services</h2>
+                <p>Everything you need to capture attention, build trust, and convert traffic into revenue.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card scroll-reveal delay-1">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Websites & Design</h3>
+                    <p>Clean, ultra-fast, and premium corporate websites tailored specifically to your company's identity and long-term goals.</p>
+                </div>
+                <div class="service-card scroll-reveal delay-2">
+                    <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Landing Pages</h3>
+                    <p>High-converting direct response landing pages designed to maximize ROAS and transform casual clicks into paying customers.</p>
+                </div>
+                <div class="service-card scroll-reveal delay-3">
+                    <div class="service-icon"><i class="fa-solid fa-rectangle-ad"></i></div>
+                    <h3>Ad Creatives</h3>
+                    <p>Eye-catching image and video ads optimized for Meta, Google, and TikTok to stop users mid-scroll.</p>
+                </div>
+                <div class="service-card scroll-reveal delay-4">
+                    <div class="service-icon"><i class="fa-solid fa-video"></i></div>
+                    <h3>UGC Content</h3>
+                    <p>Authentic User Generated Content (UGC) that builds instant social proof and massive community trust for your products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showcase" class="showcase">
+        <div class="section-container">
+            <div class="section-header scroll-reveal">
+                <h2>Engineered For Conversions</h2>
+                <p>Take a glance at how we construct scalable paths for brands online.</p>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item scroll-reveal delay-1">
+                    <div class="showcase-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="SaaS Landing Page Design">
+                    </div>
+                    <div class="showcase-content">
+                        <span class="showcase-tag">Web Development</span>
+                        <h3>SaaS Platform Landing Page</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">A sleek dark-mode framework maximizing organic signs-up by 40% using strategic UI placement.</p>
+                    </div>
+                </div>
+                <div class="showcase-item scroll-reveal delay-2">
+                    <div class="showcase-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Ad Assets">
+                    </div>
+                    <div class="showcase-content">
+                        <span class="showcase-tag">Paid Ads & UGC</span>
+                        <h3>E-Commerce Scaling Pack</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Engineered high-converting creative ad hooks paired with genuine creator video strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-container contact-layout">
+            <div class="contact-info scroll-reveal">
+                <h3>Ready to work with Web Studio?</h3>
+                <p>Fill out the form to book an onboarding strategy session. Let's talk about how we can take over your design and digital marketing requirements.</p>
+                <div class="contact-method">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span><a href="mailto:Webstudio4144@gmail.com">Webstudio4144@gmail.com</a></span>
+                </div>
+                <div class="contact-method">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>www.webstudio.agency</span>
+                </div>
+            </div>
+            <div class="contact-form scroll-reveal delay-1">
+                <form action="https://formspree.io/f/your-form-id-here" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">What asset do you need help with?</label>
+                        <select id="service" name="service">
+                            <option>Full Website Pack (Web Design + Landing Pages)</option>
+                            <option>Marketing Pack (UGC + Ad Images)</option>
+                            <option>Custom Landing Page Design</option>
+                            <option>Consultation / Strategy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your brand and what you want to build..."></textarea>
+                    </div>
+                    <input type="hidden" name="_to" value="Webstudio4144@gmail.com">
+                    <button type="submit">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Web Studio. Premier Web Design and Digital Agency. All rights reserved 
